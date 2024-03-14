@@ -1,5 +1,7 @@
+// Purpose: API module for fetching products from the dummyjson API.
 const BASE_URL: string = "https://dummyjson.com/products";
 
+// Product type object
 export type Product = {
   id: number;
   title: string;
@@ -11,6 +13,7 @@ export type Product = {
   thumbnail: string;
 };
 
+// Fetch all products from the API
 export async function getAllProducts(): Promise<Product[]> {
   try {
     const response = await fetch(BASE_URL);
@@ -25,6 +28,7 @@ export async function getAllProducts(): Promise<Product[]> {
   }
 }
 
+// Fetch a single product by string
 export async function getProductBySearchString(
   searchString: string
 ): Promise<Product[]> {
