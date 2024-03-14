@@ -1,16 +1,3 @@
-/**
- * Generate card for each item
- * including 
- * Image
- * Title
- * Description
- * Rating
- * Stock, visa även en varning om stock är mindre än 10
- * Category
- * Knapp för att lägga till i kundvagnen (Knappen behöver inte fungera)
-
- */
-
 import { isStockLow } from "./utils.ts";
 import { Product } from "./api.ts";
 
@@ -23,22 +10,25 @@ export function generateProductCard(product: Product): HTMLElement {
   const img = utils.generateHTMLImage(product.thumbnail);
   card.appendChild(img);
 
-  const title = utils.generateHTMLParagraph(product.title);
+  const title = utils.generateHTMLElement("h2", product.title);
   card.appendChild(title);
 
-  const description = utils.generateHTMLParagraph(product.description);
+  const description = utils.generateHTMLElement("p", product.description);
   card.appendChild(description);
 
-  const rating = utils.generateHTMLParagraph(`Rating: ${product.rating}`);
+  const rating = utils.generateHTMLElement("p", `Rating: ${product.rating}`);
   card.appendChild(rating);
 
-  const stock = utils.generateHTMLParagraph(`Stock: ${product.stock}`);
+  const stock = utils.generateHTMLElement("p", `Stock: ${product.stock}`);
   if (isStockLow(product.stock)) {
     stock.classList.add("low-stock");
   }
   card.appendChild(stock);
 
-  const category = utils.generateHTMLParagraph(`Category: ${product.category}`);
+  const category = utils.generateHTMLElement(
+    "p",
+    `Category: ${utils.capitalizeFirstLetter(product.category)}`
+  );
   card.appendChild(category);
 
   const buyButton = utils.generateHTMLBuyButton();
