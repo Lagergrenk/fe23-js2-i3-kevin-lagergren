@@ -3,6 +3,8 @@ import { Product } from "./api.ts";
 
 import * as utils from "./utils.ts";
 
+// Purpose: To generate a product card with the given product
+// Generates a product card with the given product
 export function generateProductCard(product: Product): HTMLElement {
   const card = document.createElement("div");
   card.classList.add("product-card");
@@ -22,6 +24,7 @@ export function generateProductCard(product: Product): HTMLElement {
   const stock = utils.generateHTMLElement("p", `Stock: ${product.stock}`);
   if (isStockLow(product.stock)) {
     stock.classList.add("low-stock");
+    stock.textContent += " (Low stock)";
   }
   card.appendChild(stock);
 
@@ -30,6 +33,11 @@ export function generateProductCard(product: Product): HTMLElement {
     `Category: ${utils.capitalizeFirstLetter(product.category)}`
   );
   card.appendChild(category);
+  const price = utils.generateHTMLElement(
+    "p",
+    utils.formatPrice(product.price)
+  );
+  card.appendChild(price);
 
   const buyButton = utils.generateHTMLBuyButton();
   card.appendChild(buyButton);

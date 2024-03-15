@@ -10,10 +10,19 @@
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 1rem 2rem;
   background-color: #f2f2f2;
+}
+
+.navbar__search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
 }
 
 .low-stock {

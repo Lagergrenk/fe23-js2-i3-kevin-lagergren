@@ -1,7 +1,7 @@
 // Porpuse: Contains utility functions to be used in the project.
 
 export function formatPrice(price: number) {
-  return `$${price.toFixed(2)}`;
+  return `$ ${price.toFixed(2)}`;
 }
 export function isStockLow(stock: number) {
   return stock < 10;

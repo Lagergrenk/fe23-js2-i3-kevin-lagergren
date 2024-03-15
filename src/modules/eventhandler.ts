@@ -17,6 +17,10 @@ function submitSearchListner() {
   searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const searchString = searchInput.value;
+    if (searchString === "") {
+      alert("You need to enter a search!");
+      return;
+    }
     clearProductsList();
     const productContainer = document.querySelector(
       ".main__product-list"
