@@ -19,6 +19,7 @@ export function generateHTMLImage(src: string) {
   const img = document.createElement("img");
   img.classList.add("product-image");
   img.src = src;
+  img.alt = "Product image";
   return img;
 }
 
